@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Repository Layer", "2 -
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation Layer", "1 - Presentation Layer", "{896EC1E1-DBB5-4AA3-8997-ACED45CDE026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoAspNetMVC01.Presentation", "ProjetoAspNetMVC01.Presentation\ProjetoAspNetMVC01.Presentation.csproj", "{79D9290C-7ABD-4AC2-89FA-A60E3CAA205A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoAspNetMVC01.Presentation", "ProjetoAspNetMVC01.Presentation\ProjetoAspNetMVC01.Presentation.csproj", "{79D9290C-7ABD-4AC2-89FA-A60E3CAA205A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoAspNetMVC01.Repository", "ProjetoAspNetMVC01.Repository\ProjetoAspNetMVC01.Repository.csproj", "{B3207BD3-39A0-4774-90D4-71A22E037DEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoAspNetMVC01.Repository", "ProjetoAspNetMVC01.Repository\ProjetoAspNetMVC01.Repository.csproj", "{B3207BD3-39A0-4774-90D4-71A22E037DEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
