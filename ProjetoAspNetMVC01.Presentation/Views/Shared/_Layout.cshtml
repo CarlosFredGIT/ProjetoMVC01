@@ -11,6 +11,8 @@
     <title>Projeto de Tarefas</title>
 
     <link href="~/css/bootstrap.css" rel="stylesheet" />
+
+    @RenderSection("styles", required : false)
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -61,5 +63,8 @@
     </div>
 
     <script src="~/js/bootstrap.js"></script>
+
+    @RenderSection("scripts", required : false)
+
 </body>
 </html>

@@ -76,7 +76,7 @@ namespace ProjetoAspNetMVC01.Repository.Repositories
         {
             var query = @"
                             SELECT * FROM TAREFA
-                            WHERE IDTAREFA = @IdTarefa
+                            WHERE IDTAREFA = @id
                         ";
 
             using (var connection = new SqlConnection(_connectionstrings))
