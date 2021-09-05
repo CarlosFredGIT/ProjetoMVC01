@@ -24,14 +24,18 @@ namespace ProjetoAspNetMVC01.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //definir o padrão de navegação do projeto (CONTROLLER/VIEW)
             services.AddControllersWithViews();
 
+            //ler a connectionstring mapeada no arquivo /appsettings.json
             var connectionstring = Configuration.GetConnectionString("Projeto01");
 
+            //configurando uma injeção de dependência (inicialização automática)
             services.AddTransient<ITarefaRepository, TarefaRepository>
-                (
-                    map => new TarefaRepository(connectionstring)
-                );
+                (map => new TarefaRepository(connectionstring));
+
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>
+                (map => new UsuarioRepository(connectionstring));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,11 +58,11 @@ namespace ProjetoAspNetMVC01.Presentation
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute
-                (
-                    name: "default",
-                    pattern: "{controller=home}/{action=Index}"
-                );
+                //definir o caminho da página inicial do projeto
+                endpoints.MapControllerRoute(
+                        name : "default", //página inicial
+                        pattern : "{controller=Account}/{action=Login}" //caminho
+                    );
             });
         }
     }

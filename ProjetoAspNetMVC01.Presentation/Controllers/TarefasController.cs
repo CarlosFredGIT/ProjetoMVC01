@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoAspNetMVC01.Presentation.Models;
 using ProjetoAspNetMVC01.Repository.Entities;
 using ProjetoAspNetMVC01.Repository.Interfaces;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoAspNetMVC01.Presentation.Controllers
 {
+    [Authorize]
     public class TarefasController : Controller
     {
         public IActionResult Cadastro()
@@ -20,7 +22,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
         public IActionResult Cadastro(TarefasCadastroModel model, [FromServices] ITarefaRepository tarefaRepository)
         {
             //verificar se todos os campos passaram nas regras de validação
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -44,7 +46,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
                     //limpar os campos do formulário
                     ModelState.Clear();
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     TempData["MensagemErro"] = $"Erro {e.Message}";
                 }
@@ -62,7 +64,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
         public IActionResult Consulta(TarefasConsultaModel model, [FromServices] ITarefaRepository tarefaRepository)
         {
             //verificar não há erros de validação no preenchimento dos campos
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -70,7 +72,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
                     model.Tarefas = tarefaRepository.ConsultarPorDatas
                         (DateTime.Parse(model.DataMin), DateTime.Parse(model.DataMax));
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     TempData["MensagemErro"] = $"Erro: {e.Message}";
                 }
@@ -82,7 +84,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
 
         public IActionResult Edicao(Guid id, [FromServices] ITarefaRepository tarefaRepository)
         {
-            var model = new TarefaEdicaoModel();
+            var model = new TarefasEdicaoModel();
 
             try
             {
@@ -97,7 +99,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
                 model.Descricao = tarefa.Descricao;
                 model.Prioridade = tarefa.Prioridade;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 TempData["MensagemErro"] = $"Erro: {e.Message}";
             }
@@ -106,9 +108,9 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
         }
 
         [HttpPost] //recebe os dados enviados pelo formulário (SUBMIT)
-        public IActionResult Edicao(TarefaEdicaoModel model, [FromServices] ITarefaRepository tarefaRepository)
+        public IActionResult Edicao(TarefasEdicaoModel model, [FromServices] ITarefaRepository tarefaRepository)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 try
                 {
@@ -125,7 +127,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
 
                     TempData["MensagemSucesso"] = $"Tarefa {tarefa.Nome} atualizada com sucesso.";
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     TempData["MensagemErro"] = $"Erro: {e.Message}";
                 }
@@ -146,7 +148,7 @@ namespace ProjetoAspNetMVC01.Presentation.Controllers
 
                 TempData["MensagemSucesso"] = $"Tarefa {tarefa.Nome}, excluída com sucesso.";
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 TempData["MensagemErro"] = $"Erro: {e.Message}";
             }

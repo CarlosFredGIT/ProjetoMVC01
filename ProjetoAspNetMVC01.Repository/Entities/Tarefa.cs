@@ -8,13 +8,11 @@ namespace ProjetoAspNetMVC01.Repository.Entities
 {
     public class Tarefa
     {
-        #region Atributos
         public Guid IdTarefa { get; set; }
         public string Nome { get; set; }
         public DateTime Data { get; set; }
         public TimeSpan Hora { get; set; }
         public string Descricao { get; set; }
         public string Prioridade { get; set; }
-        #endregion
     }
 }

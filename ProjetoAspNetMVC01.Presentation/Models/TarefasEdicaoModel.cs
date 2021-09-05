@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjetoAspNetMVC01.Presentation.Models
 {
-    public class TarefaEdicaoModel
+    public class TarefasEdicaoModel
     {
-        public Guid IdTarefa { get; set; }
+        public Guid IdTarefa { get; set; } //campo oculto (hidden)
 
         [MinLength(6, ErrorMessage = "Por favor, informe no mínimo {1} caracteres.")]
         [MaxLength(150, ErrorMessage = "Por favor, informe no máximo {1} caracteres.")]
@@ -28,6 +28,5 @@ namespace ProjetoAspNetMVC01.Presentation.Models
 
         [Required(ErrorMessage = "Por favor, informe a prioridade da tarefa.")]
         public string Prioridade { get; set; }
-
     }
 }

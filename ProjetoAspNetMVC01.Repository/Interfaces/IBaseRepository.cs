@@ -11,6 +11,7 @@ namespace ProjetoAspNetMVC01.Repository.Interfaces
         void Inserir(T obj);
         void Alterar(T obj);
         void Excluir(T obj);
+
         List<T> Consultar();
         T ObterPorId(Guid id);
     }
