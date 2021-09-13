@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,11 @@ namespace ProjetoAspNetMVC01.Presentation
         {
             //definir o padrão de navegação do projeto (CONTROLLER/VIEW)
             services.AddControllersWithViews();
+
+            //Mapear o tipo de autenticação que será utilizado no projeto (Authentication Scheme)
+            //Autenticação por meio de Cookies
+            services.Configure<CookiePolicyOptions>(options => { options.MinimumSameSitePolicy = SameSiteMode.None; });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             //ler a connectionstring mapeada no arquivo /appsettings.json
             var connectionstring = Configuration.GetConnectionString("Projeto01");
@@ -54,14 +61,16 @@ namespace ProjetoAspNetMVC01.Presentation
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 //definir o caminho da página inicial do projeto
                 endpoints.MapControllerRoute(
-                        name : "default", //página inicial
-                        pattern : "{controller=Account}/{action=Login}" //caminho
+                        name: "default", //página inicial
+                        pattern: "{controller=Account}/{action=Login}" //caminho
                     );
             });
         }

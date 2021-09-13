@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjetoAspNetMVC01.Repository\ProjetoAspNetMVC01.Repository.csproj" />
+    <ProjectReference Include="..\ProjetoMVC01.Messages\ProjetoMVC01.Messages.csproj" />
   </ItemGroup>
 
 </Project>

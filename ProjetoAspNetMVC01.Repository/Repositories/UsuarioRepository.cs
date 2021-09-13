@@ -45,7 +45,7 @@ namespace ProjetoAspNetMVC01.Repository.Repositories
                 UPDATE USUARIO SET
                     NOME = @Nome,
                     EMAIL = @Email,
-                    SENHA = CONVERT(VARCHAR(32), HASHBYTES('MD5', @Senha), 2),
+                    SENHA = CONVERT(VARCHAR(32), HASHBYTES('MD5', @Senha), 2)
                 WHERE
                     IDUSUARIO = @IdUsuario
             ";
