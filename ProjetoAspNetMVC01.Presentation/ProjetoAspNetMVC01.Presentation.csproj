@@ -11,6 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjetoAspNetMVC01.Repository\ProjetoAspNetMVC01.Repository.csproj" />
     <ProjectReference Include="..\ProjetoMVC01.Messages\ProjetoMVC01.Messages.csproj" />
+    <ProjectReference Include="..\ProjetoMVC01.Reports.Excel\ProjetoMVC01.Reports.Excel.csproj" />
+    <ProjectReference Include="..\ProjetoMVC01.Reports.Pdf\ProjetoMVC01.Reports.Pdf.csproj" />
   </ItemGroup>
 
 </Project>
